@@ -12,3 +12,5 @@ opt.tabstop = 4 -- Número de espacios que representa un tabulador
 opt.shiftwidth = 4 -- Número de espacios para la indentación automática
 opt.expandtab = false -- No convierte tabuladores en espacios
 opt.smarttab = true -- Ajusta el comportamiento del Tab según la configuración de shiftwidth y tabstop.
+
+vim.diagnostic.enable(false) -- Desactivo los diagnósticos al inicio
