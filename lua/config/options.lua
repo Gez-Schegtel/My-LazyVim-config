@@ -8,8 +8,8 @@ local opt = vim.opt
 
 opt.autoindent = true -- Mantiene la indentación en nuevas líneas
 opt.smartindent = true -- Hace que NeoVim indente automáticamente en ciertas estructuras de código (como bloques if, for, etc.).
-opt.tabstop = 4 -- Número de espacios que representa un tabulador
-opt.shiftwidth = 4 -- Número de espacios para la indentación automática
+opt.tabstop = 2 -- Número de espacios que representa un tabulador
+opt.shiftwidth = 2 -- Número de espacios para la indentación automática
 opt.expandtab = false -- No convierte tabuladores en espacios
 opt.smarttab = true -- Ajusta el comportamiento del Tab según la configuración de shiftwidth y tabstop.
 
