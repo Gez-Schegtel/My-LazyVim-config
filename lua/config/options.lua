@@ -10,3 +10,4 @@ vim.opt.expandtab = false -- No convierte tabuladores en espacios
 vim.opt.smarttab = true -- Ajusta el comportamiento del Tab según la configuración de shiftwidth y tabstop.
 vim.diagnostic.enable(false) -- Desactivo los diagnósticos al inicio
 vim.opt.cursorline = false -- Desactivé el highlight de la línea donde está el cursor.
+vim.opt.spelllang = { "en", "es" } -- Con esto podemos agregar al corrector ortográfico los idiomas inglés y español al mismo tiempo.
