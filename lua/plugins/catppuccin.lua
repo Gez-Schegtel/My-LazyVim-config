@@ -1,40 +1,44 @@
 return {
-  -- Catppuccin
+  -- Carga Catppuccin temprano
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false, -- cargar en el arranque
-    priority = 1000, -- antes que otros plugins
+    priority = 1000,
+    lazy = false,
     opts = {
-      -- elige el sabor por defecto
-      flavour = "mocha", -- "latte", "frappe", "macchiato" o "mocha"
-      -- o autodetecta según :set background
-      -- flavour = "auto",
+      flavour = "mocha",
       background = { light = "latte", dark = "mocha" },
-
-      -- Activa integraciones automáticamente (útil en LazyVim)
       auto_integrations = true,
+      integrations = { bufferline = true },
     },
+    -- Shim: si tu Catppuccin trae get_theme() pero no get(), creamos un alias
+    init = function()
+      local ok, mod = pcall(require, "catppuccin.groups.integrations.bufferline")
+      if ok and mod and not mod.get and type(mod.get_theme) == "function" then
+        mod.get = mod.get_theme
+      end
+    end,
   },
 
-  -- Haz que LazyVim use Catppuccin al iniciar
+  -- Haz que LazyVim use Catppuccin por defecto
   {
     "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin", -- también puedes poner "catppuccin-mocha", etc.
-    },
+    opts = { colorscheme = "catppuccin" },
   },
 
-  -- (Opcional) bufferline con la paleta de Catppuccin
+  -- (Opcional) extra por si quieres tocar Bufferline desde tu config;
+  -- aquí usamos lo que exista: get_theme() o get()
   {
     "akinsho/bufferline.nvim",
     optional = true,
     opts = function(_, opts)
-      local ok, cat = pcall(require, "catppuccin.groups.integrations.bufferline")
-      if ok then
-        local f = cat.get_theme or cat.get -- compat según versión
-        if type(f) == "function" then
-          opts.highlights = f()
+      if (vim.g.colors_name or ""):find("catppuccin") then
+        local ok, mod = pcall(require, "catppuccin.groups.integrations.bufferline")
+        if ok then
+          local get = mod.get_theme or mod.get
+          if type(get) == "function" then
+            opts.highlights = get({})
+          end
         end
       end
     end,
