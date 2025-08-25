@@ -25,13 +25,6 @@ return {
         end,
         desc = "Ejecutar celda # %%",
       },
-      {
-        "<leader>x",
-        function()
-          require("notebook-navigator").run_and_move()
-        end,
-        desc = "Ejecutar y bajar",
-      },
     },
   },
 }
