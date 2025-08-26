@@ -4,9 +4,10 @@ return {
     name = "catppuccin",
     priority = 1000,
     lazy = false,
-    opts = {
-      transparent_background = false,
-      integrations = {
+    opts = function(_, opts)
+      -- acá podés mutar la config base
+      opts.transparent_background = false
+      opts.integrations = {
         aerial = true,
         alpha = true,
         cmp = true,
@@ -39,8 +40,15 @@ return {
         treesitter = true,
         treesitter_context = true,
         which_key = true,
-      },
-    },
+      }
+
+      local module = require("catppuccin.groups.integrations.bufferline")
+      if module then
+        module.get = module.get_theme
+      end
+
+      return opts
+    end,
   },
   {
     "LazyVim/LazyVim",
