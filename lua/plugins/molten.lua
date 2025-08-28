@@ -8,6 +8,7 @@ return {
     init = function()
       -- estas son variables de configuración de Molten
       vim.g.molten_image_provider = "image.nvim"
+      vim.g.python3_host_prog = vim.fn.expand("/home/juani/.MyEnvs/jupyter-notebooks/bin/python") -- Esto es para el venv de Jupyter
       -- vim.g.molten_output_win_max_height = 20
       -- vim.g.molten_auto_open_output = false
       -- vim.g.molten_wrap_output = true
