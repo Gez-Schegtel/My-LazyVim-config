@@ -11,4 +11,3 @@ vim.opt.smarttab = true -- Ajusta el comportamiento del Tab según la configurac
 vim.diagnostic.enable(false) -- Desactivo los diagnósticos al inicio
 vim.opt.cursorline = false -- Desactivé el highlight de la línea donde está el cursor.
 vim.opt.spelllang = { "en", "es" } -- Con esto podemos agregar al corrector ortográfico los idiomas inglés y español al mismo tiempo.
-vim.g.python3_host_prog = vim.fn.expand("/home/juani/.MyEnvs/jupyter-notebooks/bin/python") -- Esto es para el venv de Jupyter
